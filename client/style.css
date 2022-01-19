@@ -1,0 +1,249 @@
+#create-recipe-container, #single-recipe-container, #edit-recipe-container {
+    display: none;
+}
+
+#inline-checkboxes, #edit-inline-checkboxes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#recipes-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.recipe-card {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#single-recipe-container {
+    text-align: center;
+}
+
+#recipe_details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+.container {
+    padding-bottom: 100px;
+}
+  
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+    padding: 15px;
+    background-color: #0275d8;
+    color: #e4e4e6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+.btn {
+    min-width: 75px;
+    margin: 10px;
+}
+
+#back-btn {
+    float: left;
+    margin-top: 30px;
+    background-color: #e4e4e6;
+}
+
+.btn-secondary:hover, #back-btn:hover {
+    background-color: #cdcfd2;
+}
+
+.btn-primary {
+    background-color: #0275d8;
+}
+
+#edit-btn {
+    float: right;
+    margin-top: 30px;
+}
+
+#recipe-heading {
+    display: inline-block;
+}
+
+/* inside homepage.js */
+.recipe-img-container {
+    position: relative;
+    width: 100%;
+}
+  
+/* https://www.w3schools.com/howto/howto_css_image_overlay.asp */
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .2s ease;
+    background-color: #d1d1d1;
+}
+  
+.recipe-img-container:hover .overlay {
+    opacity: 0.5;
+}
+
+.recipe-card:hover {
+    cursor: pointer;
+}
+
+#general-error-msg, #edit-general-error-msg {
+    color: #cc0000;
+}
+
+.recipe-card img {
+    height: 250px; 
+    width: 350px;
+    object-fit: cover;
+}
+
+.recipe-card h3 {
+    font-size: 20pt;
+    margin-top: 10px;
+    text-align: center;
+    width: 350px;
+}
+
+#single-recipe-container span {
+    font-weight: bold;
+}
+
+#recipe-heading h1 {
+    text-align: center;
+    margin: 30px;
+}
+
+/* single recipe */
+#recipe-img img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+#recipe-details > * {
+    font-size: 14pt;
+    text-align: left;
+}
+
+form > * {
+    margin: 20px 0;
+}
+
+#prep, #prep + div, #cook + div, #yiel, #yiel + div, #rati + div, 
+#date, #date + div, #cate + div, #seas, #tags, #ingr, #dire {
+    padding-bottom: 5px;
+}
+
+/* https://www.youtube.com/watch?v=wxz5vJ1BWrc*/ 
+#homepage-container section {
+    display: flex;
+    flex-direction: row;
+}
+
+#homepage-container section div:nth-of-type(1) {
+    flex-grow: 1;
+}
+
+#homepage-container section div:nth-of-type(2) {
+    flex-grow: 4;
+}
+
+#search-wrapper {
+    margin: 10px;
+    position: relative;
+}
+
+#search-wrapper::after {
+    content: '🔍';
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+
+#search-bar {
+    padding: 5px 10px;
+    width: 100%;
+    height: 34px;
+    border-radius: 3px;
+    border: 1px solid #8a8a8a;
+}
+
+.form-control::placeholder, #search-bar::placeholder {
+    font-style: italic;
+}
+
+#fname::first-letter, #lname::first-letter {
+    font-size: 11pt;
+}
+
+#fname, #lname {
+    display: inline-block;
+    margin: 0;
+}
+
+#ingr li {
+    list-style-type: disc;
+}
+
+#ingr li:nth-of-type(2), #ingr li:nth-of-type(2n+1) + li {
+    list-style-type: square;
+}
+
+
+@media only screen and (max-width: 754px) {
+    .recipe-card, .recipe-card img, .recipe-card h3 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 755px) {
+    .recipe-card img, .recipe-card h3 {
+        width: 350px;
+    }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    .recipe-card img, .recipe-card h3 {
+        width: 450px;
+    }
+}
+
+/* grabs last child if it is the second, fifth, eighth, etc. total and removes awkward space before it */
+@media only screen and (min-width: 1200px) { /* https://medium.com/@networkaaron/dealing-with-faux-flexbox-last-row-orphans-b5669329abf1 */
+    .recipe-card:nth-child(3n+2):last-child {
+        margin-right: auto;
+        margin-left: 45px;
+    }
+}
+
+
+
+

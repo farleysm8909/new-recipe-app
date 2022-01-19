@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+    <title>Sam Farley's Recipes</title>
+</head>
+<body>
+    <div class="container">
+        <div id="homepage-container">
+            <h1>My Recipes</h1>
+            <section>
+                <button id="create-btn" type="button" class="btn btn-primary">&plus;&#160;Create Recipe</button>
+                <div id="search-wrapper">
+                    <input type="text" name="search-bar" id="search-bar" placeholder="search for a recipe">
+                </div>
+            </section>
+            <div id="recipes-container"></div>
+          </div>
+
+        <div id="single-recipe-container">
+            <button id="back-btn" type="button" class="btn btn-secondary">&#8592; Back</button>
+            <div id="recipe-heading"></div>
+            <button id="edit-btn" type="button" class="btn btn-primary">Edit Recipe</button>
+            <div id="recipe-img"></div>
+            <div id="recipe-details">
+                <div class="row">
+                    <div class="col-md-4" id="prep"></div>
+                    <div class="col-md-4" id="cook"></div>
+                    <div class="col-md-4" id="tota"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" id="yiel"></div>
+                    <div class="col-md-4" id="rati"></div>
+                    <div class="col-md-4" id="cour"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" id="date"></div>
+                    <div class="col-md-4" id="cate"></div>
+                    <div class="col-md-4" id="cuis"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="seas"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="tag"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-12" id="ingr"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="dire"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="edit-recipe-container">
+            <h1>Edit Recipe</h1>
+            <form id="edit-form" class="row g-3 needs-validation" method="POST" enctype="multipart/form-data"> <!--action="/recipe" method="POST" enctype="multipart/form-data"-->
+                <!-- Name -->
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="edit-name" name="name" required>
+                </div>
+
+                <!-- Recipe Yield -->
+                <div class="col-md-3">
+                    <label for="recipe-yield" class="form-label">Recipe Yield</label>
+                    <input type="text" class="form-control" name="recipe-yield" id="edit-recipe-yield" required>
+                </div>
+
+                <!-- Image -->
+                <div class="col-md-3">
+                    <label for="image" class="form-label">Upload Image</label>
+                    <input type="file" class="form-control-file" name="image" id="edit-image">
+                </div>
+
+                <!-- Tags -->
+                <div class="col-md-6">
+                    <label for="tags" class="form-label">Tag Words</label>
+                    <input type="text" class="form-control" name="tags" id="edit-tags" required>
+                </div>
+
+                <!-- Prep Time -->
+                <div class="col-md-3">
+                    <label for="prep-time" class="form-label">Prep Time (minutes)</label>
+                    <input type="number" class="form-control" name="prep-time" id="edit-prep-time" required>
+                </div>
+
+                <!-- Cook Time -->
+                <div class="col-md-3">
+                    <label for="cook-time" class="form-label">Cook Time (minutes)</label>
+                    <input type="number" class="form-control" name="cook-time" id="edit-cook-time" required>
+                </div>
+
+                <!-- Category -->
+                <div class="col-md-2">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="edit-category" name="category" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Baking">Baking</option>
+                        <option value="Mixology">Mixology</option>
+                    </select>
+                </div>
+
+                <!-- Course -->
+                <div class="col-md-2">
+                    <label for="course" class="form-label">Course</label>
+                    <select id="edit-course" name="course" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Appetizer">Appetizer</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Happy-Hour">Happy Hour</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                </div>
+
+                <!-- Cuisine -->
+                <div class="col-md-2">
+                    <label for="cuisine" class="form-label">Cuisine</label>
+                    <select id="edit-cuisine" name="cuisine" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="American">American</option>
+                        <option value="British">British</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Greek">Greek</option>
+                        <option value="Hawaiian">Hawaiian</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Polish">Polish</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div class="col-md-2">
+                    <label for="rating" class="form-label">Rating</label>
+                    <select id="edit-rating" name="rating" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <!-- Season -->
+                <div class="col-md-4">
+                    <label class="form-label" for="inline-checkboxes">In which season(s) is this recipe most enjoyed?</label>
+                    <section id="edit-inline-checkboxes" name="inline-checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input box" type="checkbox" id="edit-inlineCheckbox1" name="inlineCheckbox1" value="Spring">
+                            <label class="form-check-label" for="inlineCheckbox1">Spring</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input box" type="checkbox" id="edit-inlineCheckbox2" name="inlineCheckbox2" value="Summer">
+                            <label class="form-check-label" for="inlineCheckbox2">Summer</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input box" type="checkbox" id="edit-inlineCheckbox3" name="inlineCheckbox3" value="Fall">
+                            <label class="form-check-label" for="inlineCheckbox3">Fall</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input box" type="checkbox" id="edit-inlineCheckbox4" name="inlineCheckbox4" value="Winter">
+                            <label class="form-check-label" for="inlineCheckbox4">Winter</label>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="col-md-12 mb-3">
+                    <label for="ingredients" class="form-label">Ingredients (one per line)</label>
+                    <textarea class="form-control" name="ingredients" id="edit-ingredients" rows="3" required></textarea>
+                </div>
+
+                <!-- Directions -->
+                <div class="col-md-12 mb-3">
+                    <label for="directions" class="form-label">Directions (one per line)</label>
+                    <textarea class="form-control" name="directions" id="edit-directions" rows="3" required></textarea>
+                </div>
+
+                <div id="edit-general-error-msg" class="col-md-12"></div>
+
+                <div class="col-md-12">
+                    <button id="save-edit-btn" type="submit" class="btn btn-success">Save Changes</button>
+                    <button id="cancel-edit-btn" type="button" class="btn btn-secondary">Cancel</button>
+                    <button id="delete-recipe-btn" type="button" class="btn btn-danger">Delete Recipe</button>
+                </div>
+            </form>
+            
+        </div>
+
+        <div id="create-recipe-container">
+            <h1>Create a New Recipe</h1>
+            <form id="form" class="row g-3 needs-validation" method="POST" enctype="multipart/form-data" action="/upload"> <!--action="/recipe" method="POST" enctype="multipart/form-data"-->
+                <!-- Name -->
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Recipe Name" required>
+                </div>
+
+                <!-- Recipe Yield -->
+                <div class="col-md-3">
+                    <label for="recipe-yield" class="form-label">Recipe Yield</label>
+                    <input type="text" class="form-control" name="recipe-yield" id="recipe-yield" placeholder="e.g., 4-6 servings" required>
+                </div>
+
+                <!-- Image -->
+                <div class="col-md-3">
+                    <label for="image" class="form-label">Upload Image</label>
+                    <input type="file" class="form-control-file" name="image" id="image">
+                </div>
+
+                <!-- Tags -->
+                <div class="col-md-6">
+                    <label for="tags" class="form-label">Tag Words</label>
+                    <input type="text" class="form-control" name="tags" id="tags" placeholder="e.g., chicken, crispy, spicy..." required>
+                </div>
+
+                <!-- Prep Time -->
+                <div class="col-md-3">
+                    <label for="prep-time" class="form-label">Prep Time (minutes)</label>
+                    <input type="number" class="form-control" name="prep-time" id="prep-time" placeholder="e.g., 30" required>
+                </div>
+
+                <!-- Cook Time -->
+                <div class="col-md-3">
+                    <label for="cook-time" class="form-label">Cook Time (minutes)</label>
+                    <input type="number" class="form-control" name="cook-time" id="cook-time" placeholder="e.g., 120" required>
+                </div>
+
+                <!-- Category -->
+                <div class="col-md-2">
+                    <label for="category" class="form-label">Category</label>
+                    <select id="category" name="category" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Baking">Baking</option>
+                        <option value="Mixology">Mixology</option>
+                    </select>
+                </div>
+
+                <!-- Course -->
+                <div class="col-md-2">
+                    <label for="course" class="form-label">Course</label>
+                    <select id="course" name="course" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="Appetizer">Appetizer</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Happy-Hour">Happy Hour</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Dessert">Dessert</option>
+                    </select>
+                </div>
+
+                <!-- Cuisine -->
+                <div class="col-md-2">
+                    <label for="cuisine" class="form-label">Cuisine</label>
+                    <select id="cuisine" name="cuisine" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="American">American</option>
+                        <option value="British">British</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Greek">Greek</option>
+                        <option value="Hawaiian">Hawaiian</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Polish">Polish</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Thai">Thai</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div class="col-md-2">
+                    <label for="rating" class="form-label">Rating</label>
+                    <select id="rating" name="rating" class="form-select" required>
+                        <option selected disabled value="">Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <!-- Season -->
+                <div class="col-md-4">
+                    <label class="form-label" for="inline-checkboxes">In which season(s) is this recipe most enjoyed?</label>
+                    <section id="inline-checkboxes" name="inline-checkboxes">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox1" value="Spring">
+                            <label class="form-check-label" for="inlineCheckbox1">Spring</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox2" value="Summer">
+                            <label class="form-check-label" for="inlineCheckbox2">Summer</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox3" value="Fall">
+                            <label class="form-check-label" for="inlineCheckbox3">Fall</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input checkb" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox4" value="Winter">
+                            <label class="form-check-label" for="inlineCheckbox4">Winter</label>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Ingredients -->
+                <div class="col-md-12 mb-3">
+                    <label for="ingredients" class="form-label">Ingredients (one per line)</label>
+                    <textarea class="form-control" name="ingredients" id="ingredients" rows="3" placeholder="e.g., 2 cups flour" required></textarea>
+                </div>
+
+                <!-- Directions -->
+                <div class="col-md-12 mb-3">
+                    <label for="directions" class="form-label">Directions (one per line)</label>
+                    <textarea class="form-control" name="directions" id="directions" rows="3" placeholder="e.g., Preheat the oven to 350 degrees..." required></textarea>
+                </div>
+
+                <div id="general-error-msg" class="col-md-12"></div>
+
+                <div class="col-md-12">
+                    <button id="save-recipe-btn" type="submit" class="btn btn-success">Save</button> <!-- type="submit"-->
+                    <button id="cancel-create-btn" type="button" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <footer>
+        &copy; <span id="copyright-year"></span> <p id="fname">Samantha</p> <p id="lname">Farley</p>
+    </footer>
+
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="module" src="./modules/index.js"></script>
+</body>
+</html>
